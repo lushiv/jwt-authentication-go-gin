@@ -1,7 +1,9 @@
 package initializers
 
 import (
+	"fmt"
 	"os"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,7 +15,8 @@ func connectDB() {
 	// postgres://ndiqionr:4BQHurAUBN_GUb0II1RDLaxk-JEl5KpM@babar.db.elephantsql.com/ndiqionr
 	dsn := os.Getenv("DB_URL")
 	DB, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil{
+	fmt.Println(DB)
+	if err != nil {
 		panic("Failed to connect database")
 	}
 }
